@@ -3,7 +3,16 @@
   <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input formControlName="email" type="text"  class="form-control"  value="email@example.com">
+      <input 
+        formControlName="email"
+        type="text" 
+        class="form-control"  
+        [ngClass]="{'is-invalid': userForm.controls['email'].invalid && userForm.controls['email'].touched}"
+        value="email@example.com">
+
+        <div class="invalid-feedback">
+          Por favor escriba un mail valido
+        </div>
     </div>
   </div>
   <!--contrasena-->
@@ -13,5 +22,8 @@
       <input formControlName="passworld" type="password" class="form-control" id="inputPassword">
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Enviar</button>
+  <button 
+  [disabled]="userForm.invalid"
+  class="btn btn-primary" 
+  type="submit">Enviar</button>
 </form>

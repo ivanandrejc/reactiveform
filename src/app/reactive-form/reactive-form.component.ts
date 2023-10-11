@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -11,7 +11,7 @@ export class ReactiveFormComponent {
 
   constructor(private formBuilder: FormBuilder){
     this.userForm = this.formBuilder.group ({
-      email: this.formBuilder.control(''),
+      email:['', [Validators.required, Validators.email]],
       passworld: this.formBuilder.control(''),
     })
   }
